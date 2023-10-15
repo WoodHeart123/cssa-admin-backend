@@ -4,6 +4,8 @@ package com.tencent.wxcloudrun.model;
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 @Data
 public class Admin {
     public enum Division {
@@ -12,15 +14,19 @@ public class Admin {
         HUODONG,
         DUOMEITI,
         XUANCHUAN,
+        YANJIUSHENG
     }
 
-    private Integer adminID;
+    private Integer id;
+    private String name;
+    private String email;
+    private String phone;
     private String username;
     @JSONField(serialize = false)
     private String password;
+    private Integer avatar;
     private Division department;
-    private Boolean validity;
-    // 0=超级管理员；1=管理员；2=用户；
-    private Integer adminType;
+    private Boolean isSuperuser;
+    private Timestamp createdAt;
     private String token;
 }

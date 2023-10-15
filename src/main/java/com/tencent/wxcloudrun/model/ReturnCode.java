@@ -21,7 +21,8 @@ public enum ReturnCode {
     INVALID_TYPE(112, "类型错误"),
     NO_SEARCH_RESULT(113, "无搜索结果"),
 
-    INVALID_ADMIN_INFO(301, "管理员登录信息错误");
+    INVALID_ADMIN_INFO(301, "管理员登录信息错误"),
+    DUPLICATE_USERNAME(302, "用户名重复");
 
     private final Integer code;
     private final String message;

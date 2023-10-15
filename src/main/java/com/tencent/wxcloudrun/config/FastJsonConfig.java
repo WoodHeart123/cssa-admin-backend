@@ -50,7 +50,6 @@ public class FastJsonConfig {
         serializeConfig.put(Long.TYPE, ToStringSerializer.instance);
         fastJsonConfig.setSerializeConfig(serializeConfig);
         fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
-        HttpMessageConverter<?> converters = fastJsonHttpMessageConverter;
-        return new HttpMessageConverters(converters);
+        return new HttpMessageConverters(fastJsonHttpMessageConverter);
     }
 }
