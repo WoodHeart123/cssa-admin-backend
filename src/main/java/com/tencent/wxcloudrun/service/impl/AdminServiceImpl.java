@@ -48,7 +48,7 @@ public class AdminServiceImpl implements AdminService {
             result.setToken(jwtutil.generateToken(admin.getUsername()));
             return new Response<>(result);
         } else {
-            return new Response<>(ReturnCode.INVALID_ADMIN_INFO);
+            return new Response<>(ReturnCode.INVALID_ADMIN_TOKEN);
         }
     }
 

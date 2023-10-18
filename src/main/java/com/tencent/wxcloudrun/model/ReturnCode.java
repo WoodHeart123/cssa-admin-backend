@@ -20,9 +20,9 @@ public enum ReturnCode {
     UNKNOWN_SERVICE(111, "无法识别服务项目"),
     INVALID_TYPE(112, "类型错误"),
     NO_SEARCH_RESULT(113, "无搜索结果"),
+    EMAIL_SENT_FAILED(114, "邮件发送失败"),
 
-    INVALID_ADMIN_INFO(301, "管理员登录信息错误"),
-    DUPLICATE_USERNAME(302, "用户名重复");
+    DUPLICATE_USERNAME(302, "管理员用户名重复");
 
     private final Integer code;
     private final String message;

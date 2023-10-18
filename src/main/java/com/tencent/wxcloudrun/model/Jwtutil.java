@@ -75,6 +75,11 @@ public class Jwtutil {
         return new Date(exp);
     }
 
+    private Date generateExpirationDate(Long expiration) {
+        long exp = System.currentTimeMillis() + expiration * 1000L;
+        return new Date(exp);
+    }
+
     private Boolean isTokenExpired(String token) {
         Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
@@ -92,6 +97,17 @@ public class Jwtutil {
         claims.put("sub", uid);
         claims.put("created", new Date());
         return generateToken(claims);
+    }
+
+    public String generateTokenWithExpiration(String uid, Long expiration) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("sub", uid);
+        claims.put("created", new Date());
+        return Jwts.builder()
+                .setClaims(claims)
+                .setExpiration(generateExpirationDate(expiration))
+                .signWith(SignatureAlgorithm.HS512, this.secret)
+                .compact();
     }
 
     public String generateToken(Map<String, Object> claims) {
