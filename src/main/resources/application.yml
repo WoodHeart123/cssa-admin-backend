@@ -4,10 +4,10 @@ server:
 cssa:
   wxcloudrun:
     swagger:
-      enable: true
       title: CSSA-Backend
       description: 小程序后端接口文档
-      base-package: com.tencent.wxcloudrun.controller
+      version: V1.0.0
+      base-package: org.cssa.admin.controller
 
 
 spring:
@@ -16,15 +16,6 @@ spring:
     url: jdbc:mysql://${MYSQL_ADDRESS}/${MYSQL_DB}?characterEncoding=utf-8&useUnicode=true&serverTimezone=Asia/Shanghai
     username: ${MYSQL_USERNAME}
     password: ${MySQL_PASSWORD}
-  redis:
-    port: 6379
-    host: 47.97.183.103
-    timeout: 10000
-    jedis:
-      pool:
-        max-active: 10
-        min-idle: 2
-        max-idle: 8
 
   mvc:
     view:
@@ -54,28 +45,18 @@ mybatis:
   mapper-locations: classpath*:mapper/*Mapper.xml
   config-location:  classpath:mapper/mybatis-config.xml
 
+springdoc:
+  swagger-ui:
+    path: /doc/swagger-ui.html
+  api-docs:
+    path: /doc/v3/api
+  packages-to-scan: org.cssa.wxcloudrun.controller
+  paths-to-match: /**
+
 jwt:
   header: Authorization
   secret: ${JWT_SECRET}
   expiration: 31536000
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  endpoint:
-    prometheus:
-      enabled: true
-    metrics:
-      enabled: true
-  metrics:
-    export:
-      prometheus:
-        enabled: true
-        step: 1m
-        descriptions: true
-    tags:
-      application: CSSA-Backend
 
 

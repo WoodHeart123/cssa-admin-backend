@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias ="Activity" type = "com.tencent.wxcloudrun.model.Activity"/>
-        <typeAlias alias="SignupInfo" type = "com.tencent.wxcloudrun.model.SignupInfo"/>
-        <typeAlias alias="Admin" type="com.tencent.wxcloudrun.model.Admin" />
-        <typeAlias alias="OperationLog" type="com.tencent.wxcloudrun.model.OperationLog"/>
+        <typeAlias alias="Activity" type = "org.cssa.admin.model.Activity"/>
+        <typeAlias alias="SignupInfo" type = "org.cssa.admin.model.SignupInfo"/>
+        <typeAlias alias="Admin" type="org.cssa.admin.model.Admin" />
+        <typeAlias alias="OperationLog" type="org.cssa.admin.model.OperationLog"/>
     </typeAliases>
 </configuration>
