@@ -7,7 +7,8 @@ import org.apache.logging.log4j.util.Strings;
 import org.cssa.admin.model.EmailDetail;
 import org.cssa.admin.model.Response;
 import org.cssa.admin.model.ReturnCode;
-import org.cssa.admin.service.EmailService;
+import org.cssa.admin.model.SMSDetail;
+import org.cssa.admin.service.ContactService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,10 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class EmailServiceImpl implements EmailService {
+public class ContactServiceImpl implements ContactService {
 
-    private final Logger logger = LoggerFactory.getLogger(EmailServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(ContactServiceImpl.class);
+
     @Autowired
     private JavaMailSender mailSender;
 
@@ -38,5 +40,10 @@ public class EmailServiceImpl implements EmailService {
         mailMessageHelper.setText(emailDetail.getMessage(), true);
         mailSender.send(mailMessage);
         return new Response<>(ReturnCode.SUCCESS);
+    }
+
+    @Override
+    public Response<Object> sendSimpleText(SMSDetail smsDetail) {
+        return null;
     }
 }
