@@ -43,7 +43,7 @@ public class AdminServiceImpl implements AdminService {
         admin.setPassword(DigestUtils.md5DigestAsHex(admin.getPassword().getBytes()));
         Admin result = this.adminMapper.login(admin);
         if (result != null) {
-            result.setToken(jwtutil.generateToken(admin.getUsername()));
+            result.setToken(jwtutil.generateToken(admin.getId()));
             return new Response<>(result);
         } else {
             return new Response<>(ReturnCode.INVALID_ADMIN_TOKEN);

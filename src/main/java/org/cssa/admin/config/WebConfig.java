@@ -1,6 +1,7 @@
 package org.cssa.admin.config;
 
 import com.alibaba.fastjson2.JSONWriter;
+import com.alibaba.fastjson2.support.config.FastJsonConfig;
 import com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter;
 import org.cssa.admin.util.AdminServiceInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -42,7 +43,13 @@ public class WebConfig implements WebMvcConfigurer {
         supportedMediaTypes.add(MediaType.TEXT_PLAIN);
         supportedMediaTypes.add(MediaType.TEXT_XML);
         fastJsonHttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
-        com.alibaba.fastjson2.support.config.FastJsonConfig fastJsonConfig = new com.alibaba.fastjson2.support.config.FastJsonConfig();
+        FastJsonConfig fastJsonConfig = getFastJsonConfig();
+        fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
+        converters.add(0, fastJsonHttpMessageConverter);
+    }
+
+    private static FastJsonConfig getFastJsonConfig() {
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
 
         fastJsonConfig.setCharset(StandardCharsets.UTF_8);
         fastJsonConfig.setWriterFeatures(
@@ -57,7 +64,6 @@ public class WebConfig implements WebMvcConfigurer {
                 JSONWriter.Feature.MapSortField
         );
         fastJsonConfig.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-        fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
-        converters.add(0, fastJsonHttpMessageConverter);
+        return fastJsonConfig;
     }
 }

@@ -27,11 +27,11 @@ public class Jwtutil {
     @Value("${jwt.header}")
     private String tokenHeader;
 
-    public String getUidFromToken(String token) {
-        String uid;
+    public Integer getUidFromToken(String token) {
+        Integer uid;
         try {
             Claims claims = getClaimsFromToken(token);
-            uid = claims.getSubject();
+            uid = Integer.valueOf(claims.getSubject());
         } catch (Exception e) {
             uid = null;
         }
@@ -42,7 +42,7 @@ public class Jwtutil {
         Date created;
         try {
             Claims claims = getClaimsFromToken(token);
-            created = new Date(((Long) claims.get("created")).longValue());
+            created = new Date(((Long) claims.get(CLAIM_KEY_CREATED)).longValue());
         } catch (Exception e) {
             created = null;
         }
@@ -92,17 +92,11 @@ public class Jwtutil {
         return generateToken(claims);
     }
 
-    public String generateToken(String uid) {
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("sub", uid);
-        claims.put("created", new Date());
-        return generateToken(claims);
-    }
 
     public String generateTokenWithExpiration(String uid, Long expiration) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("sub", uid);
-        claims.put("created", new Date());
+        claims.put(CLAIM_KEY_UID, uid);
+        claims.put(CLAIM_KEY_CREATED, new Date());
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(generateExpirationDate(expiration))

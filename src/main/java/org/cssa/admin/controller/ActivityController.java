@@ -2,7 +2,7 @@ package org.cssa.admin.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.cssa.admin.service.ActivityService;
-import org.cssa.admin.service.EmailService;
+import org.cssa.admin.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class ActivityController {
     ActivityService activityService;
 
     @Autowired
-    EmailService emailService;
+    ContactService contactService;
 
 
 }

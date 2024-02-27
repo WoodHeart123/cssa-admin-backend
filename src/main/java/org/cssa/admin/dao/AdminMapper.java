@@ -23,4 +23,6 @@ public interface AdminMapper {
 
     List<Admin> getAdminList();
 
+    Admin getAdmin(Integer adminID);
+
 }

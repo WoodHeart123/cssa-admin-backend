@@ -3,12 +3,7 @@
 <mapper namespace="org.cssa.admin.dao.AdminMapper">
 
 
-    <resultMap id="AdminMap" type="Admin">
-        <result property="createdAt" column="created_at" />
-        <result property="isSuperuser" column="is_superuser" />
-    </resultMap>
-
-    <select id="login" parameterType="Admin" resultMap="AdminMap">
+    <select id="login" parameterType="Admin" resultType="Admin">
         SELECT * FROM admin WHERE username = #{username} AND password = #{password}
     </select>
 
@@ -16,8 +11,12 @@
         INSERT INTO admin(username, password, department, name, email, phone, avatar) values(#{username},#{password},#{department}, #{name}, #{email}, #{phone}, #{avatar})
     </insert>
 
-    <select id="getAdminList" resultMap="AdminMap">
+    <select id="getAdminList" resultType="Admin">
         SELECT * FROM admin
+    </select>
+
+    <select id="getAdmin" resultType="Admin">
+        SELECT * FROM admin WHERE id = #{adminID} LIMIT 1
     </select>
 
 </mapper>

@@ -2,25 +2,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.cssa.admin.dao.ActivityMapper">
 
-    <resultMap id="ActivityMap" type="Activity">
-        <result property="createdAt" column="created_at" />
-        <result property="updatedAt" column="updated_at" />
-        <result property="deletedAt" column="deleted_at" />
-        <result property="additionalInfoJSON" column="additional_info" />
-        <result property="startDate" column="start_date" />
-        <result property="endDate" column="end_date" />
-        <result property="imagesJSON" column="images"/>
-        <result property="paymentJSON" column="payment"/>
-    </resultMap>
-    
-    <resultMap id="SignupInfoMap" type="SignupInfo">
-        <result property="createdAt" column="created_at" />
-        <result property="updatedAt" column="updated_at" />
-        <result property="deletedAt" column="deleted_at" />
-        <result property="actID" column="act_id" />
-        <result property="userID" column="user_id" />
-        <result property="isPaid" column="is_paid" />
-        <result property="responseJSON" column="response" />
-    </resultMap>
     
 </mapper>
