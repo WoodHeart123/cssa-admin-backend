@@ -58,9 +58,9 @@ public class ActivityState {
 
     @Schema(description = "活动负责人员")
     @JSONField(name = "responsible_person")
-    private String responsible_person;
+    private String responsiblePerson;
 
     @Schema(description = "活动更新日志")
     @JSONField(name = "update_log")
-    private String update_log;
+    private String updateLog;
 }

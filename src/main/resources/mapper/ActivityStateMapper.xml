@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tencent.wxcloudrun.dao.ActivityStateMapper">
+
+    <resultMap id="ActivityStateMap" type="ActivityState">
+        <result property="startTime" column="start_time" />
+        <result property="endTime" column="endTime" />
+        <result property="deletedAt" column="deleted_at" />
+        <result property="publishedAt" column="published_at" />
+        <result property="lastUpdated" column="last_updated" />
+        <result property="announcement" column="announcement" />
+        <result property="responsiblePerson" column="responsible_person"/>
+        <result property="updateLog" column="update_log"/>
+    </resultMap>
+
+
+</mapper>
