@@ -12,7 +12,7 @@
         <result property="imagesJSON" column="images"/>
         <result property="paymentJSON" column="payment"/>
     </resultMap>
-    
+
     <resultMap id="SignupInfoMap" type="SignupInfo">
         <result property="createdAt" column="created_at" />
         <result property="updatedAt" column="updated_at" />
@@ -70,7 +70,7 @@
             activity
         WHERE
             id = #{id}
-            AND deleted_at IS NULL
+          AND deleted_at IS NULL
     </select>
 
     <select id="checkRegistration" resultMap="SignupInfoMap">
@@ -80,8 +80,8 @@
             activity_responses
         WHERE
             user_id = #{userID}
-            AND act_id = #{actID}
-            AND deleted_at IS NULL
+          AND act_id = #{actID}
+          AND deleted_at IS NULL
         LIMIT 1
     </select>
 
@@ -118,6 +118,34 @@
           AND user_id = #{userID}
     </update>
 
+    <select id="getActivityDetails" parameterType="int" resultMap="ActivityMap">
+        SELECT id, title, description, start_date, end_date, deadline, location, capacity, images, payment, price, created_at, updated_at, deleted_at, additional_info
+        FROM activity
+        WHERE id = #{actID}
+    </select>
 
+    <update id="updateFullActivity" parameterType="map">
+        UPDATE activity
+        SET title = #{activity.title},
+            description = #{activity.description},
+            start_date = #{activity.startDate},
+            end_date = #{activity.endDate},
+            deadline = #{activity.deadline},
+            location = #{activity.location},
+            capacity = #{activity.capacity},
+            images = #{activity.images},
+            payment = #{activity.payment},
+            price = #{activity.price},
+            created_at = #{activity.createdAt},
+            updated_at = CURRENT_TIMESTAMP,
+            deleted_at = NULL
+        WHERE id = #{actID};
+    </update>
+
+    <update id="deleteActivity">
+        UPDATE activity
+        SET deleted_at = CURRENT_TIMESTAMP
+        WHERE id = #{actID} AND deleted_at IS NULL;
+    </update>
 
 </mapper>
