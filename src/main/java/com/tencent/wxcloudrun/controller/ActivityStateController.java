@@ -36,8 +36,8 @@ public class ActivityStateController {
     @PutMapping("/activityStateList/{event_id}")
     public Response<String> updateActivityState(
             @Parameter(description = "活动ID", required = true) @PathVariable(name="event_id") Integer eventId,
-            @RequestBody ActivityState updatedActivityStaet) {
-        return activityStateService.updateActivityState(eventId, updatedActivityStaet);
+            @RequestBody ActivityState updatedActivityState) {
+        return activityStateService.updateActivityState(eventId, updatedActivityState);
     }
     @Operation(summary = "删除活动状态", description = "根据给定的event_id删除具体的活动状态详情。")
     @DeleteMapping("/activityStateList/{event_id}")

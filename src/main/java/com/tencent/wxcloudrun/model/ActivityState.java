@@ -24,14 +24,14 @@ public class ActivityState {
     private Timestamp endTime;
 
     @Schema(description = "活动报名截止时间",example = "2020-12-31 23:59:59")
-    @JSONField(name = "deadline")
-    private Timestamp deadline;
+    @JSONField(name = "signup_deadline")
+    private Timestamp signup_deadline;
 
     @Schema(description = "活动删除时间；如果是null则为未删除",example = "2020-12-31 23:59:59")
     @JSONField(name = "deleted_at")
     private Timestamp deletedAt;
 
-    @Schema(description = "活动发布时间；如果是null则为未删除",example = "2020-12-31 23:59:59")
+    @Schema(description = "活动发布时间；如果是null则为未删除;活动开始时间即为活动报名时间",example = "2020-12-31 23:59:59")
     @JSONField(name = "published_at")
     private Timestamp publishedAt;
 
