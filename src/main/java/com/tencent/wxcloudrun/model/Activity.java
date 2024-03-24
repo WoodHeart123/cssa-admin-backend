@@ -82,6 +82,10 @@ public class Activity {
     @JSONField(name = "deleted_at")
     private Timestamp deletedAt;
 
+    @Schema(description = "是否可见", example = "true")
+    @JSONField(name = "is_visible")
+    private Boolean isVisible;
+
     // 数据库存储JSON, 无需对外暴露
     @Schema(hidden = true)
     @JSONField(serialize = false, deserialize = false)
