@@ -29,5 +29,6 @@ public interface ActivityService {
      */
     Response<List<Activity>> getRegisterList(String userID);
 
-
+    //Xiao posted
+    Response<Object> postActivityInfo(Activity activityInfo);
 }

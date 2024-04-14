@@ -29,5 +29,6 @@ public interface ActivityMapper {
      */
     List<Activity> getRegisterList(String userID);
 
-
+    //Xiao posted
+    void postActivityInfo(Activity activity);
 }

@@ -118,6 +118,12 @@
           AND user_id = #{userID}
     </update>
 
-
+    <insert id="postActivityInfo" parameterType="Activity">
+        INSERT INTO activity (title, description, location, start_date, end_date, deadline, 
+        price, capacity, images, additional_info, payment, created_at, updated_at, deleted_at)
+        VALUES (#{title}, #{description}, #{location}, #{start_date}, #{end_date}, #{deadline},
+                #{price}, #{capacity}, #{images}, #{additional_info}, #{payment}, #{created_at}, 
+                #{updated_at}, #{deleted_at})
+    </insert>
 
 </mapper>
